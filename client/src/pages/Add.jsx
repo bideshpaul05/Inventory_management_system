@@ -23,7 +23,7 @@ function Add() {
     try {
       const formdata = new FormData();
       formdata.append("file", image);
-      const res = await axios.post("inventory-management-system-jade.vercel.app/upload", formdata);
+      const res = await axios.post("inventory-management-system-jade.vercel.app/api/upload", formdata);
       return res.data;
     } catch (err) {
       console.log(err);
