@@ -87,7 +87,7 @@ function Home_feed() {
     const fetchdata = async()=>{
       try{
 
-        const res = await axios.get(`/products/`);
+        const res = await axios.get(`inventory-management-system-jade.vercel.app/api/products/`);
         // console.log(res)
         setdata(res.data)
       }

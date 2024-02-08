@@ -57,7 +57,7 @@ function Feed() {
     const fetchdata = async ()=>{
       try{
 
-        const res = await axios.get(`/products?cat=${path}`)
+        const res = await axios.get(`inventory-management-system-jade.vercel.app/api/products?cat=${path}`)
         setdata(res.data)
         console.log(res.data)
       }
