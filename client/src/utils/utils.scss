@@ -1,0 +1,124 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  background: rgba(14, 17, 17);
+  color: white;
+  position: sticky;
+  top: 0;
+  .container {
+    max-width: 1024px;
+    display: flex;
+    background: rgba(14, 17, 17);
+    justify-content: space-between;
+    flex: 1;
+    align-items: center;
+    margin: 0px 10px;
+    .logo {
+      flex: 1;
+      text-align: left;
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      flex: 1;
+      .link {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+  }
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  background: rgba(14, 17, 17);
+  color: white;
+  .container {
+    max-width: 1024px;
+    display: flex;
+    background: rgba(14, 17, 17);
+    justify-content: space-between;
+    flex: 1;
+    align-items: center;
+    margin: 0px 10px;
+    .logo {
+      flex: 1;
+      text-align: left;
+    }
+    .links {
+      display: flex;
+      justify-content: flex-end;
+      .link {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        font-size: 20px;
+      }
+    }
+  }
+}
+.popup {
+  position: fixed;
+  right: 0;
+  z-index: 100;
+  width: 200px;
+  background: black;
+  top: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // min-height: 150px;
+  color: white;
+  border-radius: 10px 0px 0px 10px;
+  transform: translateX(158px);
+  transition: 0.5s ease-in;
+  .header {
+    writing-mode: sideways-lr;
+    height: 150px;
+    text-align: center;
+    font-weight: 600;
+    // background: black;
+    padding: 5px 10px;
+  }
+  .buttons {
+    flex: 1 1;
+    margin: 0px 5px;
+    // height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70px;
+    min-height: 200px;
+    background-color: rgba(28, 28, 51, 0.92);
+    align-items: center;
+    padding: 5px 0px;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex: 1;
+      align-items: flex-start;
+
+      button {
+        width: 100px;
+        padding: 5px;
+        font-size: 15px;
+        // border: 1px soild white;
+        background: inherit;
+        color: white;
+        border-radius: 10px;
+        border: 2px white solid;
+        font-weight: 500;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(169, 169, 199, 0.5);
+        }
+      }
+    }
+  }
+  &:hover {
+    transform: translateX(1px);
+  }
+}

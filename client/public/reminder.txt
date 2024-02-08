@@ -1,0 +1,1 @@
+1. keep the first letter of platforms in capital
