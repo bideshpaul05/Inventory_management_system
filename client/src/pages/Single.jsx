@@ -25,7 +25,7 @@ function Single() {
   useEffect(()=>{
     const fetch = async()=>{
       try{
-        const res = await axios.get(`/products/${itemId}`)
+        const res = await axios.get(`https://inventory-management-system-bidesh.onrender.com/api/products/${itemId}`)
         // console.log(res.data[0])
 
         
@@ -65,7 +65,7 @@ function Single() {
   }
   const handleclick = async (id)=>{
     try{
-      await axios.delete(`/products/delete/${id}`)
+      await axios.delete(`https://inventory-management-system-bidesh.onrender.com/api/products/delete/${id}`)
       nav("/")
     }
     catch(err) {
