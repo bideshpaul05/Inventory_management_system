@@ -15,13 +15,15 @@ cloudinary.config({
 const app = express();
 
 app.use(express.json());
-app.use(cors(
-  {
-    origin: ["https://inventory-management-system-mvej.vercel.app/"],
-    methods: ["POST", "GET","PUT","DELETE"],
-    credentials: true
+app.use(cors());
+app.options('*',cors());
+var allowCrossDomain = function(req,res,next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();  
 }
-));
+app.use(allowCrossDomain);
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads");
