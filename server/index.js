@@ -43,7 +43,7 @@ app.post("/api/upload", upload.single("file"), function (req, res) {
       return res.status(500).json(err);
     }
     console.log(result.url);
-    return res.status(200).json(result.url);
+    return res.status(200).json(result.secure_url);
   });
   // fs.unlink('public'+req.file.path,(err)=>{
   //   if(err) console.log(err)
