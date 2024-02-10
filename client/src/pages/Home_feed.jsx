@@ -140,7 +140,7 @@ function Home_feed() {
           <div className="content">
             {data && data.map((item, ind) => {
               console.log(item.cat)
-              if (cat === "all" || cat === item.cat && ind<=5)
+              if (cat === "all" || cat === item.cat)
               
                 return (
                   <div className="item_container" key={item.id}>
