@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 // import xbox from '../images/xbox.jpg'
 
 function Home_feed() {
+  const url = "https://inventory-management-system-bidesh.onrender.com/api"
   const [cat, setcat] = useState("all");
   const [data, setdata] = useState(
     [
@@ -87,7 +88,7 @@ function Home_feed() {
     const fetchdata = async()=>{
       try{
 
-        const res = await axios.get(`https://inventory-management-system-bidesh.onrender.com/api/products/`);
+        const res = await axios.get(`${url}/products/`);
         // console.log(res)
         setdata(res.data)
       }

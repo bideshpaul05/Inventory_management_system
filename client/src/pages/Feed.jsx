@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Feed() {
+  const url = "https://inventory-management-system-bidesh.onrender.com/api"
   const [platform, setPlatform] = useState("View All");
   const navigator = useLocation();
 
@@ -57,7 +58,7 @@ function Feed() {
     const fetchdata = async ()=>{
       try{
 
-        const res = await axios.get(`https://inventory-management-system-bidesh.onrender.com/api/products?cat=${path}`)
+        const res = await axios.get(`${url}/products?cat=${path}`)
         setdata(res.data)
         console.log(res.data)
       }

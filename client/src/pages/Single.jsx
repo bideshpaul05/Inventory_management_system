@@ -5,6 +5,7 @@ import axios from'axios'
 
 function Single() {
   // const item = useLocation().state;
+  const url = "https://inventory-management-system-bidesh.onrender.com/api"
   const itemId = useLocation().pathname.split('/')[2]
   console.log(itemId)
   const [load,setload] = useState(true)
@@ -25,7 +26,7 @@ function Single() {
   useEffect(()=>{
     const fetch = async()=>{
       try{
-        const res = await axios.get(`https://inventory-management-system-bidesh.onrender.com/api/products/${itemId}`)
+        const res = await axios.get(`${url}/products/${itemId}`)
         // console.log(res.data[0])
 
         
@@ -65,7 +66,7 @@ function Single() {
   }
   const handleclick = async (id)=>{
     try{
-      await axios.delete(`https://inventory-management-system-bidesh.onrender.com/api/products/delete/${id}`)
+      await axios.delete(`${url}/products/delete/${id}`)
       nav("/")
     }
     catch(err) {

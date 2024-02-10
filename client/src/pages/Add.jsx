@@ -14,7 +14,7 @@ function Add() {
   const [image,setimage] = useState(null)
   // const [img,setimg] = useState(state?.img || "")
   // console.log(img)
-
+  const url = "https://inventory-management-system-bidesh.onrender.com/api"
   const nav = useNavigate()
 
   const cat = location.pathname.split('/')[2]
@@ -23,7 +23,7 @@ function Add() {
     try {
       const formdata = new FormData();
       formdata.append("file", image);
-      const res = await axios.post("https://inventory-management-system-bidesh.onrender.com/api/upload", formdata);
+      const res = await axios.post(`${url}/upload`, formdata);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -36,9 +36,9 @@ const handleclick = async (e) => {
   const imgurl = await upload();
   // console.log(imgurl)
   try {
-    state? await axios.put(`https://inventory-management-system-bidesh.onrender.com/api/products/${state.id}`,{
+    state? await axios.put(`${url}/products/${state.id}`,{
       name,description,cat:Cat,price,stock,platform,img:imgurl?imgurl:state.img
-    }):await axios.post(`https://inventory-management-system-bidesh.onrender.com/api/products/add`,{
+    }):await axios.post(`${url}/products/add`,{
       // title,desc:value,cat,img:img? imgurl:"", 
       name,description,cat:Cat,price,stock,platform,img:imgurl?imgurl:"https://res.cloudinary.com/dthfl5y7j/image/upload/v1707305949/samples/ecommerce/leather-bag-gray.jpg"
       // date: "moment"
