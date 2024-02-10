@@ -83,7 +83,7 @@ function Home_feed() {
   ]
   );
 
-  var count=0;
+
   useEffect(()=>{
     const fetchdata = async()=>{
       try{
@@ -138,10 +138,10 @@ function Home_feed() {
             </div>
           </div>
           <div className="content">
-            {data && data.map((item, id) => {
+            {data && data.map((item, ind) => {
               console.log(item.cat)
-              if (cat === "all" || cat === item.cat && count<=5)
-              count=count+1;
+              if (cat === "all" || cat === item.cat && ind<=5)
+              
                 return (
                   <div className="item_container" key={item.id}>
                     <div className="item_image">
