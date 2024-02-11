@@ -75,7 +75,8 @@
   transform: translateX(158px);
   transition: 0.5s ease-in;
   .header {
-    writing-mode: sideways-lr;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
     height: 150px;
     text-align: center;
     font-weight: 600;
