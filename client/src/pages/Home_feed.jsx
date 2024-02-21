@@ -143,7 +143,7 @@ function Home_feed() {
               if (cat === "all" || cat === item.cat)
               
                 return (
-                  <div className="item_container" key={item.id}>
+                  <div className="item_container" key={item._id}>
                     <div className="item_image">
                       {<img src={item.img} alt="" srcSet="" />}
                     </div>
@@ -153,7 +153,7 @@ function Home_feed() {
                       <div className="stock">{item.stock} stocks left</div>
                       <div className="price">{item.price}$</div>
                     </div>
-                    <Link to={`/item/${item.id}`} > 
+                    <Link to={`/item/${item._id}`} > 
                     {/* state={item} */}
                       <button>View details</button>
                     </Link>

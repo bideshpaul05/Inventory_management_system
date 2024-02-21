@@ -105,7 +105,7 @@ function Feed() {
           {data && data.map((item, id) => {
             if (platform === "View All" || platform.toLowerCase() === item.platform.toLowerCase())
               return (
-                <div className="item_container" key={item.id}>
+                <div className="item_container" key={item._id}>
                   <div className="item_image">
                     {<img src={item.img} alt="" srcSet="" />}
                   </div>
@@ -116,7 +116,7 @@ function Feed() {
 
                     <div className="price">{item.price}$</div>
                   </div>
-                  <Link to={`/item/${item.id}`} >
+                  <Link to={`/item/${item._id}`} >
                     <button>View details</button>
                   </Link>
                 </div>

@@ -1,4 +1,4 @@
-import {db} from "../db.js"
+import Product from "../db.js"
 
 export const  getproducts = (req,res)=>{
     let cat =  req.query.cat 
@@ -7,55 +7,71 @@ export const  getproducts = (req,res)=>{
    if(!cat || cat==='all')
    {
 
-       q='select * from products'
+     Product.find()
+     .then((data)=>res.json(data))
+     .catch(e=>res.json(e));
     }
    else
    {
 
-       q = `select * from products where cat=(?)` 
+       Product.find({cat:req.query.cat})
+       .then((data)=>res.json(data))
+        .catch(e=>res.json(e));
     }
-   
-   db.query(q,[req.query.cat],(err,data)=>{
-    if(err) res.json(err.message)
-    else res.json(data)
 
-   })
 }
 export const  getproduct = (req,res)=>{
     const q = "select * from products where id=(?)"
    
-    db.query(q,[req.params.id],(err,data)=>{
-     if(err) res.json(err.message)
-     else res.json(data)
+    // Product.query(q,[req.params.id],(err,data)=>{
+    //  if(err) res.json(err.message)
+    //  else res.json(data)
  
-    })
+    // })
+    Product.findOne({_id:req.params.id}).then((data)=>res.json(data)).catch(err=>res.json(err))
 }
-export const  updateproduct = (req,res)=>{
+export const  updateproduct = async (req,res)=>{
     const postId = req.params.id;
-    const q =
-      "UPDATE products SET `name`=?,`description`=?,`img`=?,`cat`=?, `stock`=?,`price`=?,`platform`=? WHERE `id` = ? ";
+    // const q =
+    //   "UPDATE products SET `name`=?,`description`=?,`img`=?,`cat`=?, `stock`=?,`price`=?,`platform`=? WHERE `id` = ? ";
 
-    const values = [req.body.name, req.body.description, req.body.img, req.body.cat, req.body.stock, req.body.price, req.body.platform ];
-    db.query(q,[...values,postId],(err,data)=>{
-        if(err) res.json(err.message)
-        else res.json("item updated succesfully")
-    })
+    // const values = [req.body.name, req.body.description, req.body.img, req.body.cat, req.body.stock, req.body.price, req.body.platform ];
+    // Product.query(q,[...values,postId],(err,data)=>{
+    //     if(err) res.json(err.message)
+    //     else res.json("item updated succesfully")
+    // })
+   await Product.findByIdAndUpdate(req.params.id, req.body, {new: true});
+   res.json("updated succefully: "+req.params.id)
 
 }
 export const  deleteproduct = (req,res)=>{
    const id = req.params.id
-   const q=  "delete from products where `id` = ?"
-   db.query(q,[id],(err,data)=>{
-    if(err) return res.status(500).json(err)
-    return res.status(200).json("Deleted item succesfully ")
-   })
+
+
+    Product.findByIdAndDelete(id).then(()=>res.json("item deleted succesfully")).catch(e=>res.json(e));
+      
+
 }
 export const  addproduct = (req,res)=>{
-    const q = "insert into products(`name`,`description`,`img`,`cat`,`stock`,`price`,`platform`) values (?)"
-    const     values = [req.body.name, req.body.description, req.body.img, req.body.cat, req.body.stock, req.body.price, req.body.platform ];
-    db.query(q,[values],(err,data)=>{
-        if(err) res.json(err.message)
-        else res.json("item added succesfully")
+    // const q = "insert into products(`name`,`description`,`img`,`cat`,`stock`,`price`,`platform`) values (?)"
+    const product = new Product(
+        {
+            name:req.body.name,
+            description:req.body.description,
+            img: req.body.img,
+            cat: req.body.cat,
+            stock:req.body.stock,
+            price:req.body.price,
+            platform: req.body.platform
+
+
+        }
+    )
+    product.save()
+    .then(()=>{
+        res.json("Product added succesfully")
     })
-    // res.json("")
+    .catch((err)=>console.log(err))
+  
+    
 }

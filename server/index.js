@@ -3,6 +3,8 @@ import cors from "cors";
 import routes from "./Routes/product.js";
 import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
+import mongoose from "mongoose";
+
 // import fs from "fs";
 import dotenv from 'dotenv'
 dotenv.config()
@@ -50,7 +52,9 @@ app.post("/api/upload", upload.single("file"), function (req, res) {
   // })
 });
 app.use("/api/products", routes);
-
+mongoose.connect(process.env.DB_URI)
+.then(()=>console.log("connected to database succesfully"))
+.catch(err=>console.log(err))
 app.listen(process.env.PORT, () => {
   console.log("server is running on "+ process.env.PORT );
 });

@@ -36,7 +36,7 @@ const handleclick = async (e) => {
   const imgurl = await upload();
   // console.log(imgurl)
   try {
-    state? await axios.put(`${url}/products/${state.id}`,{
+    state? await axios.put(`${url}/products/${state._id}`,{
       name,description,cat:Cat,price,stock,platform,img:imgurl?imgurl:state.img
     }):await axios.post(`${url}/products/add`,{
       // title,desc:value,cat,img:img? imgurl:"", 
