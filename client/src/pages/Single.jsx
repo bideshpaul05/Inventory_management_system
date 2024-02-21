@@ -31,7 +31,7 @@ function Single() {
 
         
        
-        setItem(res.data[0])
+        setItem(res.data)
         setload(false)
       }
       catch(err)
