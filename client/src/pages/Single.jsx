@@ -112,11 +112,11 @@ function Single() {
           </div>
 
           <div className="buttons">
-            <Link to= {`/write/${item.cat}/${item.id}`} state = {item} >
+            <Link to= {`/write/${item.cat}/${item._id}`} state = {item} >
               <button id="update">Update</button>
             </Link>
             <Link>
-              <button id="delete" onClick={(e)=>handleclick(item.id)}>Delete</button>
+              <button id="delete" onClick={(e)=>handleclick(item._id)}>Delete</button>
             </Link>
           </div>
         </div>
